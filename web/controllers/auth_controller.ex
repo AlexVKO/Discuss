@@ -10,6 +10,13 @@ defmodule Discuss.AuthController do
     signing(conn, changeset)
   end
 
+  def logout(conn, _params) do
+    conn
+    |> configure_session(drop: true)
+    |> put_flash(:info, "Logout") #TODO, why it doesnt work?
+    |> redirect(to: topic_path(conn, :index))
+  end
+
   defp signing(conn, changeset) do
     case find_or_create(changeset) do
       {:ok, user} ->
