@@ -12,3 +12,6 @@ defmodule Discuss.Topic do
     |> validate_required([:title])
   end
 end
+
+# last
+# Repo.one(from x in Discuss.Topic, order_by: [desc: x.id], limit: 1)
