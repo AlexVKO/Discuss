@@ -5,6 +5,7 @@ defmodule Discuss.User do
     field :email, :string
     field :provider, :string
     field :token, :string
+    has_many :topics, Discuss.Topic
 
     timestamps
   end
@@ -15,3 +16,7 @@ defmodule Discuss.User do
     |> validate_required([:email, :provider, :token])
   end
 end
+
+# ex:
+# Discuss.Repo.get(Discuss.User, 4)
+# Discuss.Repo.all(Discuss.User)
